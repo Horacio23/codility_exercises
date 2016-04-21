@@ -18,8 +18,28 @@
 
 class Solution {
     public int[] solution(int[] A, int K) {
-        int[] B = (K<(A.lenth/2)) ? new int[K] : new int[A.length/2];
+        int N = A.length;
+        int[] B = new int[N]
 
-        //TODO
+        if(N==0){
+            return A;
+        }
+
+        if(K > N){
+            K = K%N;
+            if(K==0){
+                return A;
+            }
+        }
+
+        for(int i=0; i<K; i++){
+          B[i]=A[N-K+i];
+        }
+
+        for(int i=0; i<N-K; i++){
+          B[K+i]= A[i];
+        }
+
+        return B;
     }
 }
