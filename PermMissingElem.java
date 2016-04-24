@@ -31,16 +31,16 @@
     public int solution(int[] A){
         int N = A.length+1;
 
-        long partialSum= (N*(N+1))/2;
+        Integer partialSum= (N*(N+1))/2;
 
-        long actualSum = 0;
+        Integer actualSum = 0;
 
         for(int i=0; i<A.length; i++){
           actualSum += A[i];
         }
 
-        int missingNumber = (int) (partialSum - actualSum);
+        Integer missingNumber =  partialSum - actualSum;
 
-        return missingNumber;
+        return missingNumber.intValue();
     }
  }
