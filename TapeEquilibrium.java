@@ -46,6 +46,14 @@
 
 class Solution {
   public int solution(int[] A){
-    
+    // this needs fixing;
+    int temp = 0;
+    int[] temA = new int[A.length];
+
+    for(int i = 0; i<A.length; i++){
+      temA[i]=temp+A[i];
+    }
+
+    return temp;
   }
 }
