@@ -54,19 +54,19 @@ func main() {
 
 func Solution(A []int) int {
 	count := 0
-	mult := 0
+	zerosAmount := 0
 	start := false
 
 	for _, v := range A {
 		if v == 0 {
 			// every time a zero is found, we count each 1 as many times as we have encountered zeros
-			mult++
+			zerosAmount++
 			start = true
 		}
 
 		if start && v == 1 {
-			// add the current count to the multiplication of all the zeroes we have found
-			count = count + (1 * mult)
+			// add the current count to the amount of all the zeroes we have found
+			count = count + zerosAmount
 
 			if count > 1000000000 {
 				return -1
