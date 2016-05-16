@@ -46,19 +46,35 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
+
 	fmt.Println(Solution("CAGCCTA", []int{2, 5, 0}, []int{4, 5, 6}))
 }
 
 func Solution(S string, P []int, Q []int) []int {
 	res := make([]int, len(P))
 	imFac := 0
+
 	var minImp int
+
+	// min and max visitedby the loop
+	minVis := math.MaxInt64
+	maxVis := 0
+
 	for i, _ := range P {
 		minImp = 1000
-		for j := P[i]; j <= Q[i]; j++ {
+
+		// the solution has to be by reusing the min fromprevious iterations, have to find out how
+		p := P[i]
+		q := Q[i]
+
+		for j := p; j <= q; j++ {
+
 			switch S[j] {
 			case 'A':
 				imFac = 1
@@ -74,6 +90,7 @@ func Solution(S string, P []int, Q []int) []int {
 				minImp = imFac
 			}
 		}
+
 		res[i] = minImp
 	}
 
