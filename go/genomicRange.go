@@ -48,7 +48,7 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
 func main() {
@@ -58,40 +58,24 @@ func main() {
 
 func Solution(S string, P []int, Q []int) []int {
 	res := make([]int, len(P))
-	imFac := 0
-
-	var minImp int
-
-	// min and max visitedby the loop
-	minVis := math.MaxInt64
-	maxVis := 0
 
 	for i, _ := range P {
-		minImp = 1000
-
-		// the solution has to be by reusing the min fromprevious iterations, have to find out how
 		p := P[i]
 		q := Q[i]
 
-		for j := p; j <= q; j++ {
-
-			switch S[j] {
-			case 'A':
-				imFac = 1
-			case 'C':
-				imFac = 2
-			case 'G':
-				imFac = 3
-			case 'T':
-				imFac = 4
-
-			}
-			if imFac < minImp {
-				minImp = imFac
-			}
+		s := S[p : q+1]
+		fmt.Println(s)
+		switch {
+		case strings.Contains(s, "A"):
+			res[i] = 1
+		case strings.Contains(s, "C"):
+			res[i] = 2
+		case strings.Contains(s, "G"):
+			res[i] = 3
+		case strings.Contains(s, "T"):
+			res[i] = 4
 		}
 
-		res[i] = minImp
 	}
 
 	return res
