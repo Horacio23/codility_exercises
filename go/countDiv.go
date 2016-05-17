@@ -24,22 +24,13 @@ import "fmt"
 
 func main() {
 
-	fmt.Println(Solution(1, 1, 1))
+	fmt.Println(Solution(0, 1, 10))
 }
 
 func Solution(A int, B int, K int) int {
-	count := 0
-
-	switch {
-	case B == 0 || (A == B && A == K):
-		return 1
-	case B == 1 || K > B:
-		return 0
-	case A%K == 0:
-		count = 1
-	case K > A && K < B:
-		return B / K
+	// there is a difference between (B-A)/K and B/K-A/K
+	if A%K == 0 {
+		return (B/K - A/K) + 1
 	}
-
-	return count + (B-A)/K
+	return B/K - A/K
 }
